@@ -8,8 +8,10 @@ type UserListProps = {
   }[];
 };
 export const UserList = ({ users }: UserListProps) => {
+  const [show, setShow] = useState(false);
   const [repos, setRepos] = useState([]);
   const onClick = async (username: string) => {
+    setShow(false);
     const query = await fetch(`https://api.github.com/users/${username}/repos`);
     const res = await query.json();
     const repos = res.map((r: any) => {
@@ -19,8 +21,8 @@ export const UserList = ({ users }: UserListProps) => {
         stargazers_count: r.stargazers_count,
       };
     });
-
-    console.log(repos);
+    setRepos(repos);
+    setShow(true);
   };
   return (
     <>
@@ -39,7 +41,7 @@ export const UserList = ({ users }: UserListProps) => {
           </li>
         ))}
       </ul>
-      <UserRepositories repos={repos} />
+      {show && <UserRepositories repos={repos} />}
     </>
   );
 };

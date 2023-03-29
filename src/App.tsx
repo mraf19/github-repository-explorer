@@ -21,7 +21,7 @@ function App() {
       <main className="flex flex-col items-center w-[90%] mx-auto mt-[30px]">
         <Form value={query} onChange={onChange} />
         <Button onClick={onClick} />
-        <ContainerList users={users} />
+        <ContainerList query={query} users={users} />
       </main>
     </>
   );
