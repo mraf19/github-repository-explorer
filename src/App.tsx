@@ -18,7 +18,7 @@ function App() {
   };
   return (
     <>
-      <main className="flex flex-col items-center w-[90%] mx-auto mt-[30px]">
+      <main className="flex flex-col items-center w-[90%] lg:w-[80%] mx-auto mt-[30px] lg:mt-[100px]">
         <Form value={query} onChange={onChange} />
         <Button onClick={onClick} />
         <ContainerList query={query} users={users} />
