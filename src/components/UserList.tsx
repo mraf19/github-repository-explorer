@@ -9,14 +9,14 @@ export const UserList = ({ name }: UserListProps) => {
   const [repos, setRepos] = useState([]);
   const [show, setShow] = useState(false);
 
-  const onClick = async (username: string) => {
-    const query = await fetch(`https://api.github.com/users/${username}/repos`);
-    const res = await query.json();
-    const repos = res.map((r: any) => {
+  const onClick = async (name: string) => {
+    const response = await fetch(`https://api.github.com/users/${name}/repos`);
+    const res = await response.json();
+    const repos = res.map((repo: any) => {
       return {
-        name: r.name,
-        description: r.description,
-        stargazers_count: r.stargazers_count,
+        name: repo.name,
+        description: repo.description,
+        stargazers_count: repo.stargazers_count,
       };
     });
     setRepos(repos);
